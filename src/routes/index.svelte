@@ -1,4 +1,17 @@
-<h1 class="text-3xl font-bold underline">
-    Hello world!
+<script>
+  import Todo from '../components/Todo.svelte';
+  import TodoForm from '../components/TodoForm.svelte';
+  import { todos } from '../stores/todoStore.js';
+  
+</script>
+
+<main>
+  <h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl">
+      My Todos
   </h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+  <TodoForm/>
+  {#each $todos as todo (todo.id)}
+    <Todo todo={todo}/>
+  {/each}
+</main>
+
