@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@supabase/supabase-js": "^1.35.6"
+		"@supabase/supabase-js": "^1.35.6",
+		"svelte-progress-bar": "^3.0.2"
 	}
 }

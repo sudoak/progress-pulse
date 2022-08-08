@@ -1,12 +1,15 @@
 <script>
+    import ProgressBar from 'svelte-progress-bar'
     import {supabase} from "../supabase.js"
   
     let loading = false
+    let progress
     let email;
   
     const handleLogin = async () => {
       try {
         loading = true
+        progress.start()
         const { error } = await supabase.auth.signIn({ email })
         if (error) throw error
         alert('Check your email for the login link!')
@@ -14,9 +17,13 @@
         alert(error.error_description || error.message)
       } finally {
         loading = false
+        progress.complete()
       }
     }
   </script>
+  
+  <ProgressBar bind:this={progress} color="#0366d6" />
+
   <h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl">
           Log In
   </h1>
